@@ -104,10 +104,6 @@ public class Ingredient {
         Scanner scnr = new Scanner(System.in);
 
         do {
-            /*
-             * FIXME: while loop executes one more time after entering end
-             */
-
             System.out.println("What is the name of the next ingredient? (type end if done adding ingredients)"); // Asks the user for nameOfIngredient
             nameOfIngredient = scnr.nextLine();
             
