@@ -71,11 +71,16 @@ public class Recipe {
         double singleServingCalories = (totalRecipeCalories / servings);
         System.out.println("Recipe: " + getRecipeName());
         System.out.println("Serves: " + getServings());
-        System.out.println("Ingredients: ");
-        for (int i = 0; i < recipeIngredients.size(); ++i) {
-            System.out.print(recipeIngredients.get(i) + ", ");
+        System.out.print("Ingredients: ");
+        for (int i = 0; i <= recipeIngredients.size() - 1; ++i) {
+            //System.out.print(i);
+            //System.out.print(recipeIngredients.size());
+            if (i != recipeIngredients.size() - 1) {
+                System.out.print(recipeIngredients.get(i) + ", ");
+            } else {
+                System.out.println(recipeIngredients.get(i) + ".");
+            }
         }
-        System.out.print(".");
         System.out.println("Each serving has " + singleServingCalories + " Calories.");
         System.out.println(); // print a blank line for readability
     }
@@ -86,7 +91,6 @@ public class Recipe {
         double totalCalories = 0;
         int numberCaloriesPerUnit = 0;
         String unitMeasurement = "";
-
 
         ArrayList<String> recipeIngredients = new ArrayList<>();
         Scanner scnr = new Scanner(System.in);
@@ -103,7 +107,7 @@ public class Recipe {
             
             System.out.println("What is the name of the next ingredient? (type end if done adding ingredients)"); // Asks the user for nameOfIngredient
             String nameOfIngredient = scnr.nextLine();
-
+            setRecipeIngredients(recipeIngredients);          
 
             if (nameOfIngredient.toLowerCase().equals("end")) {
                 addMoreIngredients = false;
@@ -130,8 +134,9 @@ public class Recipe {
                 totalCalories = totalCalories + tempIngredient.getIngredientCalories();
                 setTotalRecipeCalories(totalCalories);
                 System.out.println("The recipe uses " + ingredientAmount + " " + unitMeasurement + " of " + nameOfIngredient + " and has " + tempIngredient.getIngredientCalories() + " calories.");
-
+                System.out.println();
             }
+
 
         } while (addMoreIngredients); 
 
