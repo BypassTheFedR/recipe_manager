@@ -34,27 +34,7 @@ public class RecipeBox {
 
 	 public RecipeBox(ArrayList<String> listOfRecipes) {
 		this.listOfRecipes = listOfRecipes;
-	 } 
-	/**
-	 * Add the following custom methods:
-	 * 
-	 * DONE- //printAllRecipeDetails(Recipe selectedRecipe)
-	 * 		This method should accept a recipe from the listOfRecipes ArrayList
-	 * 		recipeName and use the Recipe.printRecipe() method 
-	 * 		to print the recipe
-	 * 		
-	 * DONE- //printAllRecipeNames() <-- This method should print just the recipe
-	 * 		names of each of the recipes in the listOfRecipes ArrayList
-	 * 
-	 * DONE- //addRecipe(Recipe tmpRecipe) <-- This method should use
-	 * 		the Recipe.addRecipe() method to add a new 
-	 * 		Recipe to the listOfRecipes
-	 * 
-	 */
-
-	/*
-	 * Takes the name of a recipe object and prints the details of the recipe using the recipe object's print method.
-	 */
+	 }
 
 	 public void printAllRecipeDetails(String recipeName) {
 		if (listOfRecipes.contains(recipeName)) {
@@ -80,7 +60,8 @@ public class RecipeBox {
 		System.out.println("Enter the name of the recipe: ");
 		// Recipe tmpRecipe = scnr.nextLine();
 		listOfRecipes.add(scnr.nextLine());
-		Recipe tmpRecipe = new Recipe(scnr.nextLine());
+		Recipe tmpRecipe = new Recipe();
+		tmpRecipe.addNewRecipe();
 	}
 	/**
 	* A variation of following menu method should be used as the actual main 
