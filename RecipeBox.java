@@ -62,16 +62,7 @@ public class RecipeBox {
 		System.out.println("Enter the name of the recipe: ");
 		// Recipe tmpRecipe = scnr.nextLine();
 		listOfRecipes.add(scnr.nextLine());
-		Recipe tmpRecipe = new Recipe();
-	}
-
-	public void deleteRecipe() {
-		Scanner deleteScnr = new Scanner(System.in);
-		String deleteRecipe = deleteScnr.nextLine();
-		for (int j = 0; j < listOfRecipes.size(); ++j) {
-			if (listOfRecipes.get(j).equalsIgnoreCase(deleteRecipe))
-				listOfRecipes.remove(j);
-		}
+		Recipe tmpRecipe = new Recipe(scnr.nextLine());
 	}
 	/**
 	* A variation of following menu method should be used as the actual main 
