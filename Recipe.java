@@ -101,7 +101,6 @@ public class Recipe {
         System.out.println("How many servings does your recipe make?");
         setServings(scnr.nextInt());
         scnr.nextLine();
-        // setServings(Integer.parseInt(scnr.nextLine())); // get user input for the number of servings
         
         do {
             
@@ -111,6 +110,7 @@ public class Recipe {
 
             if (nameOfIngredient.toLowerCase().equals("end")) {
                 addMoreIngredients = false;
+                System.out.println(); // Prints an empty line for readability
             } else {
                 Ingredient tempIngredient = new Ingredient();
                 tempIngredient.setNameOfIngredient(nameOfIngredient);

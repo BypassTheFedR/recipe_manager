@@ -35,39 +35,21 @@ public class RecipeBox {
 	 public RecipeBox(ArrayList<String> listOfRecipes) {
 		this.listOfRecipes = listOfRecipes;
 	 } 
-	/**
-	 * Add the following custom methods:
-	 * 
-	 * DONE- //printAllRecipeDetails(Recipe selectedRecipe)
-	 * 		This method should accept a recipe from the listOfRecipes ArrayList
-	 * 		recipeName and use the Recipe.printRecipe() method 
-	 * 		to print the recipe
-	 * 		
-	 * DONE- //printAllRecipeNames() <-- This method should print just the recipe
-	 * 		names of each of the recipes in the listOfRecipes ArrayList
-	 * 
-	 * DONE- //addRecipe(Recipe tmpRecipe) <-- This method should use
-	 * 		the Recipe.addRecipe() method to add a new 
-	 * 		Recipe to the listOfRecipes
-	 * 
-	 */
-
-	/*
-	 * Takes the name of a recipe object and prints the details of the recipe using the recipe object's print method.
-	 */
-
+	
+	 /*
+	  * Prints recipe
+	  */
 	 public void printAllRecipeDetails(String recipeName) {
-		if (listOfRecipes.contains(recipeName)) {
+		if (listOfRecipes.contains(recipeName)) { // checks to see if recipe exists in the listOfRecipes
 			Recipe.getRecipeIngredients(recipeName);
 
 		} else {
-
 			System.out.println(recipeName + "is not in the list of recipes.");
 		}
 	}
 	
 	/*
-	 * Prints the names of all recipes
+	 * Prints the names of all recipes in list of recipes
 	 */
 	public void printAllRecipeNames() {
 		for (int i = 0; i < listOfRecipes.size(); ++i) {
@@ -80,7 +62,16 @@ public class RecipeBox {
 		System.out.println("Enter the name of the recipe: ");
 		// Recipe tmpRecipe = scnr.nextLine();
 		listOfRecipes.add(scnr.nextLine());
-		Recipe tmpRecipe = new Recipe(scnr.nextLine());
+		Recipe tmpRecipe = new Recipe();
+	}
+
+	public void deleteRecipe() {
+		Scanner deleteScnr = new Scanner(System.in);
+		String deleteRecipe = deleteScnr.nextLine();
+		for (int j = 0; j < listOfRecipes.size(); ++j) {
+			if (listOfRecipes.get(j).equalsIgnoreCase(deleteRecipe))
+				listOfRecipes.remove(j);
+		}
 	}
 	/**
 	* A variation of following menu method should be used as the actual main 
@@ -92,22 +83,22 @@ public class RecipeBox {
 	*
 	*/
 	
-	// public void menu() {
-	public static void main(String[] args) {
-    	// Create a Recipe Box
+	public void menu() {
+	  	// Create a Recipe Box
     		
+		// FIXME: DElete the folowing two lines
 		RecipeBox myRecipeBox = new RecipeBox(); //Uncomment for main method
+		Recipe newRecipe = new Recipe();
         Scanner menuScnr = new Scanner(System.in);
-        
-		
+        	
 		/**
 		* Print a menu for the user to select one of the three options:
 		*
 		*/
 		
-		System.out.println("Menu\n" + "1. Add Recipe\n" + "2. Print All Recipe Details\n" + "3. Print All Recipe Names\n" + "\nPlease select a menu item:");
+		System.out.println("Menu\n" + "1. Add Recipe\n" + "2. Print All Recipe Details\n" + "3. Print All Recipe Names\n" + "4. Delete a Recipe\n" + "\nPlease select a menu item:");
         while (menuScnr.hasNextInt() || menuScnr.hasNextLine()) {
-            System.out.println("Menu\n" + "1. Add Recipe\n" + "2. Print All Recipe Details\n" + "3. Print All Recipe Names\n" + "\nPlease select a menu item:");
+            System.out.println("Menu\n" + "1. Add Recipe\n" + "2. Print All Recipe Details\n" + "3. Print All Recipe Names\n" + "4. Delete a Recipe\n" + "\nPlease select a menu item:");
             int input = menuScnr.nextInt();
             
 			/**
@@ -162,13 +153,16 @@ public class RecipeBox {
                 myRecipeBox.printAllRecipeDetails(selectedRecipeName);
             } else if (input == 3) {
 				myRecipeBox.printAllRecipeNames();
+				System.print(\n);
+			} else if (input == 4) {
+				myRecipeBox.deleteRecipe();
             } else {
-                System.out.println("\nMenu\n" + "1. Add Recipe\n" + "2. Print Recipe\n" + "3. Adjust Recipe Servings\n" + "\nPlease select a menu item:");
+                System.out.println("\nMenu\n" + "1. Add Recipe\n" + "2. Print Recipe\n" + "3. Adjust Recipe Servings\n" + "4. Delete a Recipe\n" + "\nPlease select a menu item:");
             }
 			
 			/* */
 			
-			System.out.println("Menu\n" + "1. Add Recipe\n" + "2. Print All Recipe Details\n" + "3. Print All Recipe Names\n" + "\nPlease select a menu item:");
+			System.out.println("Menu\n" + "1. Add Recipe\n" + "2. Print All Recipe Details\n" + "3. Print All Recipe Names\n" + "4. Delete a Recipe\n" + "\nPlease select a menu item:");
 		}
 	}
 }
