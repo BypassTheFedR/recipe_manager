@@ -9,7 +9,7 @@ public class Recipe {
      */
     private String recipeName;
     private int servings;
-    private ArrayList<String> recipeIngredients = new ArrayList<>();
+    private ArrayList<Ingredient> recipeIngredients;
     private double totalRecipeCalories;
     
     public String getRecipeName() { // Get recipeName
@@ -28,18 +28,13 @@ public class Recipe {
         this.servings = servings;
     }
 
-    public Ingredient getRecipeIngredients() { // Get recipe ingredients
+    public ArrayList<Ingredient> getRecipeIngredients() { // Get recipe ingredients
         return recipeIngredients;    
     }
 
-    public void setRecipeIngredients(ArrayList<String> recipeIngredients) { // Sets the recipe ingredients
+    public void setRecipeIngredients(ArrayList<Ingredient> recipeIngredients) { // Sets the recipe ingredients
         this.recipeIngredients = recipeIngredients;
 
-
-        /*
-         * For help later:
-         * https://stackoverflow.com/questions/33060592/getters-and-setters-for-arraylists-in-java 
-         */
     }
 
     public double getTotalRecipeCalories() { // Gets the total recipe calories
@@ -60,7 +55,7 @@ public class Recipe {
         totalRecipeCalories = 0.0; 
     }
     
-    public Recipe(String recipeName, int servings, ArrayList<String> recipeIngredients, double totalRecipeCalories) {
+    public Recipe(String recipeName, int servings, ArrayList<Ingredient> recipeIngredients, double totalRecipeCalories) {
         this.recipeName = recipeName;
         this.servings = servings;
         this.recipeIngredients = recipeIngredients;
@@ -92,9 +87,13 @@ public class Recipe {
         int numberCaloriesPerUnit = 0;
         String unitMeasurement = "";
 
-        ArrayList<String> recipeIngredients = new ArrayList<>();
+        ArrayList<Ingredient> recipeIngredients = new ArrayList<>();
         Scanner scnr = new Scanner(System.in);
 
+        /*
+         *  Sets the recipe name using the setter method
+         *  Commented out because this is done in the RecipeBox Class.
+         */
         System.out.println("What is the name of your recipe?");
         setRecipeName(scnr.nextLine()); // get user input for the recipe name
 
@@ -113,9 +112,7 @@ public class Recipe {
                 System.out.println(); // Prints an empty line for readability
             } else {
                 Ingredient tempIngredient = new Ingredient();
-                tempIngredient.setNameOfIngredient(nameOfIngredient);
-                recipeIngredients.add(nameOfIngredient);
-              
+                tempIngredient.setNameOfIngredient(nameOfIngredient);              
 
                 System.out.println("Please enter the amount of the ingredient to be used: "); // Asks the user for the amount of the ingredient and stores it in ingredientAmount
                 ingredientAmount = scnr.nextDouble();
